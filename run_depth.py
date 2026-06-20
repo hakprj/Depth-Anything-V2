@@ -25,7 +25,7 @@ print(f"[DepthAnythingV2] images: {img_dir}")
 print(f"[DepthAnythingV2] depths: {out_dir}")
 
 # --------- install Depth Anything V2 ----------
-repo_dir = Path("/home/hayrap/repos/gl_image_to_3d/external/Depth-Anything-V2")
+repo_dir = Path(__file__).resolve().parent
 
 
 # Make import work
@@ -41,7 +41,7 @@ ckpt_path = ckpt_dir / "depth_anything_v2_vitl.pth"
 if not ckpt_path.exists():
     subprocess.run([
         "bash", "-lc",
-        "wget -q -O /home/hayrap/repos/gl_image_to_3d/external/Depth-Anything-V2/checkpoints/depth_anything_v2_vitl.pth "
+        f"wget -q -O {ckpt_path} "
         "https://huggingface.co/depth-anything/Depth-Anything-V2-Large/resolve/main/depth_anything_v2_vitl.pth"
     ], check=True)
 
